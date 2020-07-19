@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-
+import 'Navbar/Navbar.dart';
+import 'LandingPage/LandingPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,96 +43,27 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      body:
-
-        Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("background.jpg"),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Center(
-            child:
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                    maxWidth: 1000
-                ),
-                child: Container(
-                  child: DefaultTabController(
-                    length: 3,
-                    child: Scaffold(
-                      backgroundColor: Colors.transparent,
-                      appBar: AppBar(
-                          backgroundColor: Colors.indigo,
-                          bottom: TabBar(
-                            tabs: [
-                              Padding(child: Text('home'),
-                                padding: EdgeInsets.all(15),
-                              ),
-                              Padding(child: Text('apps'),
-                                padding: EdgeInsets.all(15),
-                              ),
-                              Padding(child: Text('contact'),
-                                padding: EdgeInsets.all(15),
-                              ),
-                            ],
-
-                            indicatorColor: Colors.white,
-                          ),
-                          title: Expanded(
-                              child:
-                              Container(
-                                alignment: Alignment.topLeft,
-                                child: Row(
-                                  children: [
-                                    Text('L'),
-                                    Icon(MaterialCommunityIcons.lambda),
-                                    Text('M I N'),
-                                    Icon(MaterialCommunityIcons.lambda),
-                                    Text('R       M E D I C A L'),
-
-
-                                  ],
-                                )
-                              )
-                          )
-                      ),
-                      body: TabBarView(
-                        children: [
-                          Container(
-                            color: Colors.transparent,
-                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                            child: SingleChildScrollView(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    
-                                    child: Text("hello"),
-                                  )
-                                ],
-                              )
-                            ),
-                          ),
-                          Icon(Icons.directions_transit),
-                          Icon(Icons.directions_bike),
-                        ],
-                      ),
-                    ),
-                  ),
-
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.indigo, width: 2),
-                    color: Colors.transparent,
-                  ),
-                ),
-              ),
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          //
+          gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: Alignment.topRight,
+              colors: [Colors.indigoAccent, Colors.lightBlueAccent]),
         ),
-
-
-
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Navbar(),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 20.0, horizontal: 40.0),
+                child: LandingPage(),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
